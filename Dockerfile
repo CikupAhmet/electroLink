@@ -1,8 +1,8 @@
-FROM node:16 AS base
+FROM node:16
 WORKDIR /app
 EXPOSE 3002
 
-FROM node:16 AS build
+FROM node:16
 WORKDIR /src
 COPY ["factory-ui/package*.json", "./"]
 
