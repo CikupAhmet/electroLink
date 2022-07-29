@@ -1,13 +1,11 @@
 # Install the app dependencies in a full Node docker image
 FROM registry.access.redhat.com/ubi8/nodejs-16:latest
 
-WORKDIR /src
 #COPY package*.json ./
 COPY ["factory-ui/package*.json", "./"]
 
 RUN npm install
 
-RUN chmod -R 777 /src
 RUN npm run build
 
 COPY --from=0 /opt/app-root/src/node_modules /opt/app-root/src/node_modules
