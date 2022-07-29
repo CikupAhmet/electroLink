@@ -6,5 +6,5 @@ WORKDIR /src
 COPY ["factory-ui/package*.json", "./"]
 
 RUN npm install
-CMD npm run start
+CMD npm run surve
 EXPOSE 3000
