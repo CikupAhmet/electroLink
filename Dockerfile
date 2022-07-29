@@ -1,11 +1,18 @@
-# Install the app dependencies in a full Node docker image
-FROM registry.access.redhat.com/ubi8/nodejs-16:latest
+FROM node:16 AS base
+WORKDIR /app
+EXPOSE 3002
 
-#COPY package*.json ./
+FROM node:16 AS build
+WORKDIR /src
 COPY ["factory-ui/package*.json", "./"]
 
+# workaround for quick packages
+# COPY node_modules ./node_modules
+#ADD ["Ui/Nova.Ui/nodemodules.tar.gz", "./"]
+#ADD nodemodules.tar.gz ./
 RUN npm install
 
+RUN chmod -R 777 /src
 RUN npm run build
 
 COPY --from=0 /opt/app-root/src/node_modules /opt/app-root/src/node_modules
