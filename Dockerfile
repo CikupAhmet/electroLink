@@ -15,8 +15,5 @@ RUN npm install
 RUN chmod -R 777 /src
 #RUN npm run build
 
-COPY --from=0 /opt/app-root/src/node_modules /opt/app-root/src/node_modules
-COPY . /opt/app-root/src
-
 CMD npm run serve
 EXPOSE 3000
