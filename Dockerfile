@@ -1,14 +1,9 @@
 FROM node:16
-WORKDIR /src
-COPY ["factory-ui/package*.json", "./"]
+WORKDIR /home/node/app
+COPY factory-ui /home/node/app
 
-# workaround for quick packages
-# COPY node_modules ./node_modules
-#ADD ["Ui/Nova.Ui/nodemodules.tar.gz", "./"]
-#ADD nodemodules.tar.gz ./
 RUN npm install
 
-RUN chmod -R 777 /src
 #RUN npm run build
 
 CMD npm run serve
